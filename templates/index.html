@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Most Vulnerable Web App V1.21</title>
+    <style>
+        /* Basic reset and styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Full-height layout */
+        html, body {
+            height: 100%;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Particle background styling */
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            top: 0;
+            left: 0;
+        }
+
+        /* Main content wrapper */
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            justify-content: space-between;
+            text-align: center;
+            color: #ffffff;
+        }
+
+        /* theme color */
+        body {
+            background-color: #c8102e;
+        }
+
+        h1 {
+            margin-top: 20px;
+        }
+
+        /* Grid layout for tiles */
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+
+        .demo-tile {
+            background-color: #ffffff;
+            color: #333;
+            border-radius: 8px;
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.2s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .demo-tile:hover {
+            transform: scale(1.05);
+        }
+
+        .demo-tile img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .demo-tile a {
+            display: block;
+            padding: 10px;
+            font-size: 1.1em;
+            color: #c8102e;
+            text-decoration: none;
+        }
+
+        .demo-tile a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer styling */
+        footer {
+            padding: 10px;
+            background-color: #333333;
+            text-align: center;
+            font-size: 0.9em;
+            color: #bbbbbb;
+        }
+
+        /* Popup styling */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px; /* Increased width */
+            padding: 20px; /* Increased padding for more space */
+            background: #ffffff;
+            color: #333333;
+            border-radius: 8px;
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            z-index: 10;
+            font-size: 0.7em; 
+        }
+
+        .popup h2 {
+            margin-bottom: 20px; /* Increased margin for spacing */
+            font-size: 1.5em; /* Larger header size */
+        }
+
+        .popup p {
+            font-size: 1.2em; /* Larger font size for hash values */
+            margin: 10px 0; /* Spacing between hash values */
+        }
+
+        .popup button {
+            margin-top: 15px;
+            padding: 10px 20px; /* Increased padding for larger button */
+            font-size: 1em; /* Larger font for button */
+            background-color: #c8102e;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .popup button:hover {
+            background-color: #a60c24;
+        }
+    </style>
+</head>
+<body>
+    <!-- Particle background -->
+    <div id="particles-js"></div>
+
+    <!-- Main content wrapper -->
+    <div class="content-wrapper">
+        <h1>Welcome to the Most Vulnerable Web App on the CSULB Campus V1.21!</h1>
+
+        <!-- Grid container for demo tiles -->
+        <div class="demo-grid">
+            <!-- Example demo tiles -->
+            <div class="demo-tile">
+                <img src="https://play-lh.googleusercontent.com/OYUEmWrktPiE-He8c18Z3YMmaBKfjOs0RP0knPVhOrk-JmMOf1xXBxtZIdPFfmdEtVA" alt="Network Scan">
+                <a href="">Network Scan</a>
+            </div>
+            <div class="demo-tile">
+                <img src="https://spyboy.blog/wp-content/uploads/2023/02/what-is-a-denial-of-service-dos-attack.webp?w=810&h=580&crop=1" alt="Denial Of Service">
+                <a href="">Denial Of Service</a>
+            </div>
+            <div class="demo-tile">
+                <img src="https://i.ytimg.com/vi/1nJgupaUPEQ/maxresdefault.jpg" alt="SQL Injection">
+                <a href="/sql_injection">SQL Injection</a>
+            </div>
+            <div class="demo-tile">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYEdrbxRAFgg-SMLgPxNaCtPkobi5oOUDm8Q&s" alt="Cross-Site Scripting">
+                <a href="/xss">Cross-Site Scripting (XSS)</a>
+            </div>
+            <div class="demo-tile">
+                <img src="https://supertokens.com/covers/what-is-cross-site-request-forgery.png" alt="Cross-Site Request Forgery">
+                <a href="/csrf">Cross-Site Request Forgery (CSRF)</a>
+            </div>
+            <div class="demo-tile">
+                <img src="https://cdn.prod.website-files.com/5ff66329429d880392f6cba2/6242afb0955ccbe10f2fc275_open%20redirects%20Preview.jpg" alt="Open Redirect">
+                <a href="/open_redirect">Open Redirect</a>
+            </div>
+            <div class="demo-tile">
+                <img src="https://cdn.prod.website-files.com/5efc3ccdb72aaa7480ec8179/61a84092b54712303d193b4c_Enumeration%20Attacks%204.png" alt="User Enumeration">
+                <a href="/user_enum">User Enumeration</a>
+            </div>
+            <div class="demo-tile">
+                <img src="https://latesthackingnews.com/wp-content/uploads/2014/06/upload-file-e14035986582471.gif" alt="File Upload">
+                <a href="/file_upload">File Upload</a>
+            </div>
+            <div class="demo-tile">
+                <img src="https://media.licdn.com/dms/image/v2/C5612AQFFDG72Bddi-g/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1520064017589?e=2147483647&v=beta&t=2cUSrpFMvVOcndjh7Ldg56BFMvGFqItHjRuxx6c1rXA" alt="Insecure Captcha">
+                <a href="/insecure_captcha">Insecure Captcha</a>
+            </div>
+            <div class="demo-tile">
+                <img src="https://cdn.prod.website-files.com/5ff66329429d880392f6cba2/62a2057a00d065a08a826440_reflected%20XSS%20%20Preview.jpg" alt="Reflected XSS">
+                <a href="/reflected_xss">Reflected XSS</a>
+            </div>
+            <div class="demo-tile">
+                <img src="https://braincoke.fr/assets/static/session_medium_response.1bb425a.02d7b455313c4bb9f876688392b8d802.png" alt="Weak Session ID">
+                <a href="/weak_session_id">Weak Session ID</a>
+            </div>
+            <div class="demo-tile">
+                <img src="https://cryptogennepal.com/images/blog/CSP-bypass/1st_hu0e0b7e35fa129d4216eea881b463f32c_29474_1110x0_resize_box_3.png" alt="CSP Bypass">
+                <a href="/csp_bypass">CSP Bypass</a>
+            </div>
+
+        </div>
+
+        <!-- Footer with educational disclaimer -->
+        <footer>
+            This web application is for educational purposes only. | Do not use it outside CSUN Campus without the instructor's permission. |
+            For detailed info about the MVWA design and development, please reach out to Dr. Samuel Addington at addingto@uci.edu | All images used in this app are for educational purposes, and the copyright belongs to their respective owners.
+        </footer>
+    </div>
+
+    <!-- Popup for Easter egg -->
+    <div class="popup" id="easterEggPopup">
+        <h2>Secret Hashes Unlocked!</h2>
+        <p>Hash 1: 5d41402abc4b2a76b9719d911017c592</p>
+        <p>Hash 2: e99a18c428cb38d5f260853678922e03</p>
+        <button onclick="closePopup()">Close</button>
+    </div>
+
+    <!-- Include Particles.js from CDN -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Initialize Particles.js with smaller particles
+        particlesJS("particles-js", {
+            particles: {
+                number: {
+                    value: 50,
+                    density: {
+                        enable: true,
+                        value_area: 800
+                    }
+                },
+                color: {
+                    value: "#ffffff"
+                },
+                shape: {
+                    type: "circle",
+                },
+                opacity: {
+                    value: 0.3,
+                },
+                size: {
+                    value: 2,
+                    random: true,
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 120,
+                    color: "#ffffff",
+                    opacity: 0.3,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    out_mode: "out",
+                }
+            },
+            interactivity: {
+                events: {
+                    onclick: {
+                        enable: true,
+                        mode: "push"
+                    }
+                }
+            },
+            retina_detect: true
+        });
+
+        // Easter egg click tracking and popup reveal
+        let clickCount = 0;
+        document.addEventListener("click", function() {
+            clickCount++;
+            if (clickCount === 7) {
+                showPopup();
+                clickCount = 0;
+            }
+        });
+
+        function showPopup() {
+            document.getElementById("easterEggPopup").style.display = "block";
+        }
+
+        function closePopup() {
+            document.getElementById("easterEggPopup").style.display = "none";
+        }
+    </script>
+</body>
+</html>
